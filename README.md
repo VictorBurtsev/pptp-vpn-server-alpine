@@ -44,6 +44,13 @@ One of the possible solutions is to start container with networking mode set to 
 docker run -d --privileged --net=host -v {local_path_to_chap_secrets}:/etc/ppp/chap-secrets mobtitude/vpn-pptp
 ````
 
+### Apply on docker host some command
+````
+sysctl -w net.netfilter.nf_conntrack_helper=1
+
+modprobe ip_nat_pptp
+````
+
 **Note:** Before starting container in `--net=host` mode, please read how networking in `host` mode works in Docker:
 https://docs.docker.com/reference/run/#mode-host
 
